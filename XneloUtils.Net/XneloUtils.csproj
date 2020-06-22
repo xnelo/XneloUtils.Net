@@ -10,7 +10,6 @@ Copyright (c) 2020 Spencer Hoffa
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<OutputType>Library</OutputType>
 		<TargetFramework>netcoreapp3.0</TargetFramework>
-		<RootNamespace>XneloUtils</RootNamespace>
 	</PropertyGroup>
 
 </Project>
