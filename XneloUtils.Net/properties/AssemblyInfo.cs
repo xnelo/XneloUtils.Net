@@ -1,7 +1,7 @@
-﻿#region Copyright (c) 2020 Spencer Hoffa
+﻿#region Copyright (c) 2021 Spencer Hoffa
 /// \file AssemblyInfo.cs
 /// \author Spencer Hoffa
-/// \copyright \link LICENSE.md MIT License\endlink 2020 Spencer Hoffa 
+/// \copyright \link LICENSE.md MIT License\endlink 2021 Spencer Hoffa 
 #endregion
 
 using System.Reflection;
