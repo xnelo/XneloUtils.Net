@@ -1,12 +1,4 @@
-﻿#region Copyright (c) 2021 Spencer Hoffa
-/// \file Crc16.cs
-/// \author Spencer Hoffa
-/// \copyright \link LICENSE.md MIT License\endlink 2021 Spencer Hoffa 
-/// https://github.com/vinmenn/Crc16/blob/master/Crc16.h
-/// accessed on 2/3/2021 9:07 PM
-#endregion
-
-//-------------------------------------------------------------------------------------
+﻿//-------------------------------------------------------------------------------------
 // CRC16 support class
 // Based on various examples found on the web
 // Copyright (C) 2014 Vincenzo Mennella (see license.txt)
@@ -35,6 +27,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //-------------------------------------------------------------------------------------
+
+// CSharpified by Spencer Hoffa
 
 namespace XneloUtils.Net.Data
 {
@@ -203,7 +197,7 @@ namespace XneloUtils.Net.Data
 		// XModem: 		width=16 poly=0x1021 init=0x0000 refin=false refout=false xorout=0x0000 check=0x31c3
 		// CCITT-False:	width=16 poly=0x1021 init=0xffff refin=false refout=false xorout=0x0000 check=0x29b1
 		//---------------------------------------------------
-		public static uint fastCrc(byte[] data, byte start, ushort length, bool reflectIn, bool reflectOut, ushort polynomial, ushort xorIn, ushort xorOut, ushort msbMask, ushort mask)
+		public static ushort fastCrc(byte[] data, ushort start, ushort length, bool reflectIn, bool reflectOut, ushort polynomial, ushort xorIn, ushort xorOut, ushort msbMask, ushort mask)
 		{
 			ushort crc = xorIn;
 
@@ -251,7 +245,7 @@ namespace XneloUtils.Net.Data
 			return crc;
 		}
 
-		public static uint XModemCrc(byte[] data, byte start, ushort length)
+		public static ushort XModemCrc(byte[] data, ushort start, ushort length)
 		{
 			//  XModem parameters: poly=0x1021 init=0x0000 refin=false refout=false xorout=0x0000
 			return fastCrc(data, start, length,
@@ -260,7 +254,7 @@ namespace XneloUtils.Net.Data
 				0x1021, 0x0000, 0x0000, 0x8000, 0xffff);
 		}
 
-		public static uint Mcrf4XX(byte[] data, byte start, ushort length)
+		public static ushort Mcrf4XX(byte[] data, ushort start, ushort length)
 		{
 			return fastCrc(data, start, length,
 				true,
@@ -268,7 +262,7 @@ namespace XneloUtils.Net.Data
 				0x1021, 0xffff, 0x0000, 0x8000, 0xffff);
 		}
 
-		public static uint Modbus(byte[] data, byte start, ushort length)
+		public static ushort Modbus(byte[] data, ushort start, ushort length)
 		{
 			return fastCrc(data, start, length,
 				true,

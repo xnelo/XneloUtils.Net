@@ -1,0 +1,9 @@
+﻿Deque class implementation 
+	* Author: Stephen Cleary 
+	* Location: https://github.com/StephenCleary/Deque 
+	* Accessed: 2/8/2021 9:49 PM (MST [UTC -7])
+
+CRC16 class implementation
+	* Author: Vincenzo Mennella
+	* Location: https://github.com/vinmenn/Crc16/blob/master/Crc16.h
+	* Accessed: 2/3/2021 9:07 PM (MST [UTC -7])
