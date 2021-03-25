@@ -1,6 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿#region Copyright (c) 2021 Spencer Hoffa
+// \file Buffer.cs
+// \author Spencer Hoffa
+// \copyright \link LICENSE.md MIT License\endlink 2021 Spencer Hoffa 
+#endregion
+
+using System;
 
 namespace XneloUtils.Net.Collections
 {
@@ -43,6 +47,16 @@ namespace XneloUtils.Net.Collections
 			{
 				return m_DataInBuffer;
 			}
+		}
+
+		public bool HasData()
+		{
+			return DataInBuffer > 0;
+		}
+
+		public bool HasData(int amt)
+		{
+			return DataInBuffer >= amt;
 		}
 
 		public T Peek(int index)
