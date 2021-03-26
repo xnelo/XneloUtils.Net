@@ -8,23 +8,24 @@ using System;
 
 namespace XneloUtils.Net.Collections
 {
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <remarks>This is thread safe.</remarks>
+	/// <typeparam name="T"></typeparam>
 	public class Buffer<T>
 	{
-		private object m_Lock = new object();
 		private T[] m_Buffer = null;
 		private int m_BufferSize;
 		private int m_DataInBuffer;
 
-
 		public Buffer(int size)
 		{
 			if (size < 1) throw new ArgumentException("Cannot pass a size less than 1");
-			lock (m_Lock)
-			{
-				m_BufferSize = size;
-				m_Buffer = new T[m_BufferSize];
-				m_DataInBuffer = 0;
-			}
+			
+			m_BufferSize = size;
+			m_Buffer = new T[m_BufferSize];
+			m_DataInBuffer = 0;
 		}
 
 		public void AddData(T[] data, int amtToAdd)
@@ -38,6 +39,14 @@ namespace XneloUtils.Net.Collections
 
 				Array.Copy(data, 0, m_Buffer, m_DataInBuffer, amtToAdd);
 				m_DataInBuffer += amtToAdd;
+			}
+		}
+
+		public void Clear()
+		{
+			lock(m_Buffer)
+			{
+				m_DataInBuffer = 0;
 			}
 		}
 
@@ -85,24 +94,13 @@ namespace XneloUtils.Net.Collections
 
 				Array.Copy(m_Buffer, 0, retVal, 0, amount);
 				// remove copied data
-				/*if (m_DataInBuffer - amount == 0)
-				{
-					m_DataInBuffer = 0;
-				}
-				else
-				{
-					T[] newBuffer = new T[m_BufferSize];
-					Array.Copy(m_Buffer, amount, newBuffer, 0, m_DataInBuffer - amount);
-					m_Buffer = newBuffer;
-					m_DataInBuffer -= amount;
-				}*/
-				Remove(amount);
+				Remove_NoLock(amount);
 			}
 
 			return retVal;
 		}
 
-		public void Remove(int amount)
+		private void Remove_NoLock(int amount)
 		{
 			if (m_DataInBuffer - amount == 0)
 			{
@@ -114,6 +112,14 @@ namespace XneloUtils.Net.Collections
 				Array.Copy(m_Buffer, amount, newBuffer, 0, m_DataInBuffer - amount);
 				m_Buffer = newBuffer;
 				m_DataInBuffer -= amount;
+			}
+		}
+
+		public void Remove(int amount)
+		{
+			lock(m_Buffer)
+			{
+				Remove_NoLock(amount);
 			}
 		}
 	}
