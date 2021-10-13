@@ -29,6 +29,7 @@
 //-------------------------------------------------------------------------------------
 
 // CSharpified by Spencer Hoffa
+// 10/13/2021 disabled CS0675 warning in code.
 
 namespace XneloUtils.Net.Data
 {
@@ -63,7 +64,9 @@ namespace XneloUtils.Net.Data
 				// If the LSB bit is set, set the reflection of it.
 				if ((data & 0x01) != 0)
 				{
+#pragma warning disable CS0675 // Bitwise-or operator used on a sign-extended operand
 					reflection |= (ulong)(1 << ((bits - 1) - bit));
+#pragma warning restore CS0675 // Bitwise-or operator used on a sign-extended operand
 				}
 				data = (byte)(data >> 1);
 			}
@@ -86,7 +89,9 @@ namespace XneloUtils.Net.Data
 				// If the LSB bit is set, set the reflection of it.
 				if ((data & 0x01) != 0)
 				{
+#pragma warning disable CS0675 // Bitwise-or operator used on a sign-extended operand
 					reflection |= (ulong)(1 << ((bits - 1) - bit));
+#pragma warning restore CS0675 // Bitwise-or operator used on a sign-extended operand
 
 				}
 

@@ -28,7 +28,11 @@
 //	* changed namepsace for inclusion into XneloUtils
 //	* combined the Deque.cs and CollectionHelpers.cs files.
 //	* Tabified the entire file.
+// 10/13/2021
+//	* Added nullable enable at top of file.
 #endregion
+
+#nullable enable
 
 using System;
 using System.Collections;
