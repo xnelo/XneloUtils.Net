@@ -4,13 +4,13 @@
 // \copyright \link LICENSE.md MIT License\endlink 2022 Spencer Hoffa 
 #endregion
 
-using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using XneloUtils.Desktop.Net.MVVM.Interface;
 
 namespace XneloUtils.Desktop.Net.MVVM
 {
-	public class ViewModelBase : INotifyPropertyChanged, IDisposable
+	public class ViewModelBase : IViewModel
 	{
 		#region Event
 		public event PropertyChangedEventHandler PropertyChanged;
