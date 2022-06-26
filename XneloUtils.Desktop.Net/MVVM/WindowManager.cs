@@ -5,6 +5,7 @@
 #endregion
 
 using System;
+using System.Windows;
 using System.Collections.Generic;
 using XneloUtils.Desktop.Net.MVVM.Interface;
 
@@ -39,6 +40,11 @@ namespace XneloUtils.Desktop.Net.MVVM
 			{
 				w.Show();
 			}
+		}
+
+		public void ShowOkDialog(string msg, string caption)
+		{
+			MessageBox.Show(msg, caption, MessageBoxButton.OK, MessageBoxImage.None);
 		}
 	}
 }
