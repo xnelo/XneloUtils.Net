@@ -9,7 +9,7 @@ Copyright (c) 2022 Spencer Hoffa
 	<PropertyGroup>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<OutputType>Library</OutputType>
-		<TargetFramework>net5.0-windows</TargetFramework>
+		<TargetFramework>net6.0-windows</TargetFramework>
 		<UseWPF>True</UseWPF>
 		<RootNamespace>XneloUtils.Desktop.Net</RootNamespace>
 	</PropertyGroup>

@@ -42,8 +42,8 @@ namespace XneloUtils.Desktop.Bootstrap.Autofac.Net
 			return returnAssemblies;
 		}
 
-		public static void Init(BootStrapperConfig config)
-		{
+		private static void BuildContainer(BootStrapperConfig config)
+        {
 			ContainerBuilder builder = new();
 
 			var assemblies = GetAssemblies(config);
@@ -66,9 +66,20 @@ namespace XneloUtils.Desktop.Bootstrap.Autofac.Net
 			s_Container = builder.Build();
 		}
 
+		public static void Init(BootStrapperConfig config)
+		{
+			// FIRST BUILD CONTAINER
+			BuildContainer(config);
+		}
+
 		public static T GetTypeOf<T>()
 		{
 			return s_Container.Resolve<T>();
 		}
+
+		public static IEnumerable<T> GetTypesOf<T>()
+        {
+			return s_Container.Resolve<IEnumerable<T>>();
+        }
 	}
 }
