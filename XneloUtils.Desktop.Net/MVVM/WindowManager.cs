@@ -24,13 +24,7 @@ namespace XneloUtils.Desktop.Net.MVVM
 
 		public void ShowWindow<TViewModel>(TViewModel vm, bool asModal)
 		{
-			if (!m_VmToViewMap.TryGetValue(typeof(TViewModel), out Type view))
-			{
-				throw new NullReferenceException($"View model of type {typeof(TViewModel)} does not have a view mapped.");
-			}
-
-			var w = Activator.CreateInstance(view) as IWindow;
-			w.DataContext = vm;
+			var w = GetWindow(vm);
 
 			if (asModal)
 			{
@@ -45,6 +39,19 @@ namespace XneloUtils.Desktop.Net.MVVM
 		public void ShowOkDialog(string msg, string caption)
 		{
 			MessageBox.Show(msg, caption, MessageBoxButton.OK, MessageBoxImage.None);
+		}
+
+		public IWindow GetWindow<TViewModel>(TViewModel vm)
+		{
+			if (!m_VmToViewMap.TryGetValue(typeof(TViewModel), out Type view))
+			{
+				throw new NullReferenceException($"View model of type {typeof(TViewModel)} does not have a view mapped.");
+			}
+
+			var w = Activator.CreateInstance(view) as IWindow;
+			w.DataContext = vm;
+
+			return w;
 		}
 	}
 }

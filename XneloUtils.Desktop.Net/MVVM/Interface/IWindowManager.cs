@@ -21,5 +21,13 @@ namespace XneloUtils.Desktop.Net.MVVM.Interface
 		/// Should the window be a modal or 'dialog' window that will halt code execution until window is closed.
 		/// </param>
 		void ShowWindow<TViewModel>(TViewModel vm, bool asModal);
+
+		/// <summary>
+		/// Get the window for the passed in view Model.
+		/// </summary>
+		/// <typeparam name="TViewModel"></typeparam>
+		/// <param name="vm">The VM that is the data context for the new window.</param>
+		/// <returns>A built window.</returns>
+		IWindow GetWindow<TViewModel>(TViewModel vm);
 	}
 }
