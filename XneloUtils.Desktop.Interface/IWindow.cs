@@ -4,7 +4,8 @@
 // \copyright \link LICENSE.md MIT License\endlink 2022 Spencer Hoffa 
 #endregion
 
-namespace XneloUtils.Desktop.Interface.MVVM
+
+namespace XneloUtils.Desktop.Interface
 {
 	/// <summary>
 	/// This class should be applied to the code behind of a Window. The window

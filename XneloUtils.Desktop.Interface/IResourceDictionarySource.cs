@@ -6,7 +6,7 @@
 
 using System.Windows;
 
-namespace XneloUtils.Desktop.Interface.MVVM
+namespace XneloUtils.Desktop.Interface
 {
 	/// <summary>
 	/// Allows injection of View Resource Dictionaries

@@ -8,6 +8,7 @@ using System;
 using System.Windows;
 using System.Collections.Generic;
 using XneloUtils.Desktop.Interface.MVVM;
+using XneloUtils.Desktop.Interface;
 
 namespace XneloUtils.Desktop.MVVM
 {

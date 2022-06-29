@@ -4,13 +4,12 @@
 // \copyright \link LICENSE.md MIT License\endlink 2022 Spencer Hoffa 
 #endregion
 
-using XneloUtils.Desktop.Interface.MVVM;
 
 namespace XneloUtils.Desktop.Interface.MVVM
 {
 	public interface IWindowManager
 	{
-		void RegisterWindow<TViewModel, TView>() 
+		void RegisterWindow<TViewModel, TView>()
 			where TViewModel : IViewModel
 			where TView : IWindow;
 
