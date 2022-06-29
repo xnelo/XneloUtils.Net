@@ -1,0 +1,17 @@
+﻿<!--
+Copyright (c) 2022 Spencer Hoffa
+\file XneloUtils.Desktop.Net.csproj
+\author Spencer Hoffa
+\copyright \link LICENSE.md MIT License\endlink 2020 Spencer Hoffa 
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<OutputType>Library</OutputType>
+		<UseWPF>true</UseWPF>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<RootNamespace>XneloUtils.Desktop.Interface</RootNamespace>
+	</PropertyGroup>
+
+</Project>
