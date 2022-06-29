@@ -15,6 +15,7 @@ Copyright (c) 2022 Spencer Hoffa
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\XneloUtils.Bootstrap.Interface\XneloUtils.Bootstrap.Interface.csproj" />
 	  <ProjectReference Include="..\XneloUtils.Desktop.Interface\XneloUtils.Desktop.Interface.csproj" />
 	</ItemGroup>
 

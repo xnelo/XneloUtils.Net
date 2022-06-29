@@ -5,6 +5,8 @@
 #endregion
 
 
+using System;
+
 namespace XneloUtils.Desktop.Interface
 {
 	/// <summary>
@@ -14,9 +16,13 @@ namespace XneloUtils.Desktop.Interface
 	/// </summary>
 	public interface IWindow
 	{
-		public object DataContext { get; set; }
+		void Close();
 
-		public void Show();
-		public bool? ShowDialog();
+		object DataContext { get; set; }
+
+		event EventHandler Closed;
+
+		void Show();
+		bool? ShowDialog();
 	}
 }

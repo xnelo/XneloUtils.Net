@@ -10,11 +10,15 @@ Copyright (c) 2022 Spencer Hoffa
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<OutputType>Library</OutputType>
 		<TargetFramework>net6.0</TargetFramework>
-		<RootNamespace>XneloUtils.Desktop.Bootstrap.Autofac</RootNamespace>
+		<RootNamespace>XneloUtils.Bootstrap.Autofac</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="Autofac" Version="6.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\XneloUtils.Bootstrap.Interface\XneloUtils.Bootstrap.Interface.csproj" />
 	</ItemGroup>
 
 </Project>

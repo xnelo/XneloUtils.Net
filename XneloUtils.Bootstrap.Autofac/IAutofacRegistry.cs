@@ -6,7 +6,7 @@
 
 using Autofac;
 
-namespace XneloUtils.Desktop.Bootstrap.Autofac
+namespace XneloUtils.Bootstrap.Autofac
 {
 	public interface IAutofacRegistry
 	{

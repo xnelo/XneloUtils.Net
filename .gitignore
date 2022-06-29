@@ -7,8 +7,11 @@ XneloUtils.Test/obj
 XneloUtils.Desktop/bin
 XneloUtils.Desktop/obj
 
-XneloUtils.Desktop.Bootstrap.Autofac/bin
-XneloUtils.Desktop.Bootstrap.Autofac/obj
+XneloUtils.Bootstrap.Autofac/bin
+XneloUtils.Bootstrap.Autofac/obj
+
+XneloUtils.Bootstrap.Interface/bin
+XneloUtils.Bootstrap.Interface/obj
 
 XneloUtils.Desktop.Interface/bin
 XneloUtils.Desktop.Interface/obj

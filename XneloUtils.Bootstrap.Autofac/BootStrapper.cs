@@ -9,8 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using XneloUtils.Bootstrap.Interface;
 
-namespace XneloUtils.Desktop.Bootstrap.Autofac
+namespace XneloUtils.Bootstrap.Autofac
 {
 	public static class BootStrapper
 	{
@@ -70,6 +71,15 @@ namespace XneloUtils.Desktop.Bootstrap.Autofac
 		{
 			// FIRST BUILD CONTAINER
 			BuildContainer(config);
+		}
+
+		public static void Shutdown()
+		{
+			var shutdownClasses = GetTypesOf<IShutdownEvent>();
+			foreach(var shutdownClass in shutdownClasses)
+			{
+				shutdownClass.OnShutdown();
+			}
 		}
 
 		public static T GetTypeOf<T>()

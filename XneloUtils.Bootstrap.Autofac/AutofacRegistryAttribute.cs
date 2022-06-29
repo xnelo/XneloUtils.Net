@@ -6,7 +6,7 @@
 #endregion
 
 
-namespace XneloUtils.Desktop.Bootstrap.Autofac
+namespace XneloUtils.Bootstrap.Autofac
 {
 	[System.AttributeUsage(System.AttributeTargets.Class)]
 	public class AutofacRegistryAttribute: System.Attribute

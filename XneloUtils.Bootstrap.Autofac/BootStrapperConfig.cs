@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace XneloUtils.Desktop.Bootstrap.Autofac
+namespace XneloUtils.Bootstrap.Autofac
 {
 	public class BootStrapperConfig
 	{

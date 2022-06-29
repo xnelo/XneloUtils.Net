@@ -9,12 +9,14 @@ using System.Windows;
 using System.Collections.Generic;
 using XneloUtils.Desktop.Interface.MVVM;
 using XneloUtils.Desktop.Interface;
+using XneloUtils.Bootstrap.Interface;
 
 namespace XneloUtils.Desktop.MVVM
 {
-	public class WindowManager: IWindowManager
+	public class WindowManager: IWindowManager, IShutdownEvent
 	{
 		private Dictionary<Type, Type> m_VmToViewMap = new();
+		private Dictionary<IViewModel, IWindow> m_ViewToWindow = new();
 
 		public void RegisterWindow<TViewModel, TView>()
 			where TViewModel : IViewModel
@@ -23,7 +25,7 @@ namespace XneloUtils.Desktop.MVVM
 			m_VmToViewMap[typeof(TViewModel)] = typeof(TView);
 		}
 
-		public void ShowWindow<TViewModel>(TViewModel vm, bool asModal)
+		public void ShowWindow<TViewModel>(TViewModel vm, bool asModal) where TViewModel : IViewModel
 		{
 			var w = GetWindow(vm);
 
@@ -34,6 +36,19 @@ namespace XneloUtils.Desktop.MVVM
 			else
 			{
 				w.Show();
+				w.Closed += OnWindowClose;
+				m_ViewToWindow.Add(vm, w);
+			}
+		}
+
+		private void OnWindowClose(object sender, EventArgs e)
+		{
+			if (sender is IWindow sw)
+			{
+				sw.Closed -= OnWindowClose;
+				var vm = sw.DataContext as IViewModel;
+				m_ViewToWindow.Remove(vm);
+				vm.Dispose();
 			}
 		}
 
@@ -42,7 +57,7 @@ namespace XneloUtils.Desktop.MVVM
 			MessageBox.Show(msg, caption, MessageBoxButton.OK, MessageBoxImage.None);
 		}
 
-		public IWindow GetWindow<TViewModel>(TViewModel vm)
+		public IWindow GetWindow<TViewModel>(TViewModel vm) where TViewModel : IViewModel
 		{
 			if (!m_VmToViewMap.TryGetValue(typeof(TViewModel), out Type view))
 			{
@@ -53,6 +68,27 @@ namespace XneloUtils.Desktop.MVVM
 			w.DataContext = vm;
 
 			return w;
+		}
+
+		public void OnShutdown()
+		{
+			CloseAllWindows();
+		}
+
+		public void CloseAllWindows()
+		{
+			foreach (var wp in m_ViewToWindow)
+			{
+				var window = wp.Value;
+				var vm = wp.Key;
+
+				window.Closed -= OnWindowClose;
+				window.Close();
+
+				vm.Dispose();
+			}
+
+			m_ViewToWindow.Clear();
 		}
 	}
 }

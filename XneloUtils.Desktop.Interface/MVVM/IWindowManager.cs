@@ -21,7 +21,7 @@ namespace XneloUtils.Desktop.Interface.MVVM
 		/// <param name="asModal">
 		/// Should the window be a modal or 'dialog' window that will halt code execution until window is closed.
 		/// </param>
-		void ShowWindow<TViewModel>(TViewModel vm, bool asModal);
+		void ShowWindow<TViewModel>(TViewModel vm, bool asModal) where TViewModel: IViewModel;
 
 		/// <summary>
 		/// Get the window for the passed in view Model.
@@ -29,7 +29,7 @@ namespace XneloUtils.Desktop.Interface.MVVM
 		/// <typeparam name="TViewModel"></typeparam>
 		/// <param name="vm">The VM that is the data context for the new window.</param>
 		/// <returns>A built window.</returns>
-		IWindow GetWindow<TViewModel>(TViewModel vm);
+		IWindow GetWindow<TViewModel>(TViewModel vm) where TViewModel : IViewModel;
 
 		/// <summary>
 		/// Show a message box with ok only button.
@@ -37,5 +37,10 @@ namespace XneloUtils.Desktop.Interface.MVVM
 		/// <param name="msg">The message to display</param>
 		/// <param name="caption">The title to display on the messagebox.</param>
 		void ShowOkDialog(string msg, string caption);
+
+		/// <summary>
+		/// Close all open windows.
+		/// </summary>
+		void CloseAllWindows();
 	}
 }
