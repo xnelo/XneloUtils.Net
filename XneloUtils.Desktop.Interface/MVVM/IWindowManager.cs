@@ -5,6 +5,7 @@
 #endregion
 
 
+
 namespace XneloUtils.Desktop.Interface.MVVM
 {
 	public interface IWindowManager
@@ -37,6 +38,23 @@ namespace XneloUtils.Desktop.Interface.MVVM
 		/// <param name="msg">The message to display</param>
 		/// <param name="caption">The title to display on the messagebox.</param>
 		void ShowOkDialog(string msg, string caption);
+
+		/// <summary>
+		/// Show a Yes No Dialog and return the result.
+		/// </summary>
+		/// <param name="msg">The message to display.</param>
+		/// <param name="caption">The title to display on the messagebox.</param>
+		MessageBoxResultEnum ShowYesNoDialog(string msg, string caption);
+
+		/// <summary>
+		/// Show a Yes No Dialog and return the result.
+		/// </summary>
+		/// <param name="msg">The message to display.</param>
+		/// <param name="caption">The title to display on the messagebox.</param>
+		/// <param name="isNoSelected">
+		/// Is the no button automatically selected or if false yes button selected.
+		/// </param>
+		MessageBoxResultEnum ShowYesNoDialog(string msg, string caption, bool isNoSelected);
 
 		/// <summary>
 		/// Close all open windows.

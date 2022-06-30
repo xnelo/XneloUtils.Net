@@ -57,6 +57,28 @@ namespace XneloUtils.Desktop.MVVM
 			MessageBox.Show(msg, caption, MessageBoxButton.OK, MessageBoxImage.None);
 		}
 
+		public MessageBoxResultEnum ShowYesNoDialog(string msg, string caption)
+		{
+			return ShowYesNoDialog(msg, caption, false);
+		}
+
+		public MessageBoxResultEnum ShowYesNoDialog(string msg, string caption, bool isNoSelected)
+		{
+			MessageBoxResult selected = MessageBoxResult.Yes;
+			if (isNoSelected)
+			{
+				selected = MessageBoxResult.No;
+			}
+
+			MessageBoxResult res = MessageBox.Show(msg, caption, MessageBoxButton.YesNo, MessageBoxImage.Question, selected);
+
+			return res switch
+			{
+				MessageBoxResult.Yes => MessageBoxResultEnum.Yes,
+				_ => MessageBoxResultEnum.No
+			};
+		}
+
 		public IWindow GetWindow<TViewModel>(TViewModel vm) where TViewModel : IViewModel
 		{
 			if (!m_VmToViewMap.TryGetValue(typeof(TViewModel), out Type view))
