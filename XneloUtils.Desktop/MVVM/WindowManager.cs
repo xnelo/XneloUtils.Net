@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using XneloUtils.Desktop.Interface.MVVM;
 using XneloUtils.Desktop.Interface;
 using XneloUtils.Bootstrap.Interface;
+using Microsoft.Win32;
 
 namespace XneloUtils.Desktop.MVVM
 {
@@ -77,6 +78,41 @@ namespace XneloUtils.Desktop.MVVM
 				MessageBoxResult.Yes => MessageBoxResultEnum.Yes,
 				_ => MessageBoxResultEnum.No
 			};
+		}
+
+		public string ShowOpenDialog(string filter, string title)
+		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			openFileDialog.Filter = filter;
+			openFileDialog.Title = title;
+			openFileDialog.Multiselect = false;
+			openFileDialog.ShowDialog();
+
+			if (string.IsNullOrWhiteSpace(openFileDialog.FileName))
+			{
+				return null;
+			}
+			else
+			{
+				return openFileDialog.FileName;
+			}
+		}
+
+		public string ShowSaveDialog(string filter, string title)
+		{
+			SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+			saveFileDialog1.Filter = filter;
+			saveFileDialog1.Title = title;
+			saveFileDialog1.ShowDialog();
+
+			if (string.IsNullOrWhiteSpace(saveFileDialog1.FileName))
+			{
+				return null;
+			}
+			else
+			{
+				return saveFileDialog1.FileName;
+			}
 		}
 
 		public IWindow GetWindow<TViewModel>(TViewModel vm) where TViewModel : IViewModel

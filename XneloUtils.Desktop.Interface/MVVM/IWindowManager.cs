@@ -57,6 +57,22 @@ namespace XneloUtils.Desktop.Interface.MVVM
 		MessageBoxResultEnum ShowYesNoDialog(string msg, string caption, bool isNoSelected);
 
 		/// <summary>
+		/// Show the open dialog box.
+		/// </summary>
+		/// <param name="filter">The filter for files to open.</param>
+		/// <param name="title">The title of the open dialog.</param>
+		/// <returns>The filename if a valid one is selected. Null if not.</returns>
+		string ShowOpenDialog(string filter, string title);
+
+		/// <summary>
+		/// Show the save dialog box.
+		/// </summary>
+		/// <param name="filter">The filter for files to save as.</param>
+		/// <param name="title">The title of the save dialog.</param>
+		/// <returns>The filename if a valid one is selected. Null if not.</returns>
+		string ShowSaveDialog(string filter, string title);
+
+		/// <summary>
 		/// Close all open windows.
 		/// </summary>
 		void CloseAllWindows();
