@@ -1,5 +1,5 @@
 ﻿#region Copyright (c) 2022 Spencer Hoffa
-// \file IntegerNumericValidator.cs
+// \file DoubleNumericValidator.cs
 // \author Spencer Hoffa
 // \copyright \link LICENSE.md MIT License\endlink 2022 Spencer Hoffa 
 #endregion
@@ -10,7 +10,7 @@ using System.Windows.Controls;
 
 namespace XneloUtils.Desktop.MVVM.Validators
 {
-	public class IntegerNumericValidator : ValidationRule
+	public class DoubleNumericValidator: ValidationRule
 	{
 		public bool AllowNegative { get; set; }
 		public override ValidationResult Validate(object value, CultureInfo cultureInfo)
@@ -21,10 +21,9 @@ namespace XneloUtils.Desktop.MVVM.Validators
 				return new ValidationResult(false, "Cannot convert to string.");
 			}
 
-			// using float here gives the results I need in the UI
-			if (float.TryParse(stringValue, out float floatNumber))
+			if (double.TryParse(stringValue, out double floatNumber))
 			{
-				if (!AllowNegative && floatNumber < 0.0f)
+				if (!AllowNegative && floatNumber < 0.0)
 				{
 					return new ValidationResult(false, "Numeric value must be positive.");
 				}
